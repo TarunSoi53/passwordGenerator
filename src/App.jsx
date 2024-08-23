@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function App() {
+  const [length,setLength] = useState(8)
+  const [numberAllowed,setNumberAllowed] = useState(true)
+  const [charactersAllowed,setCharactersAllowed] = useState(true)
+  const [password,setPassword] = useState("")
+
+
+  
+
   return (
-    <div>
-      a password genertor
+    <div className='text-white bg-black h-screen w-full' >
+     
     </div>
   )
 }
