@@ -25,6 +25,10 @@ function App() {
     window.navigator.clipboard.writeText(password);
     alert('Password copied to clipboard');
   },[password])
+  const refresh= useCallback (()=>{
+
+    passwordGenerate()
+  },[password])
 
   useEffect(() => {
     passwordGenerate()
@@ -34,12 +38,13 @@ function App() {
     <div className='h-screen w-full flex justify-center items-center bg-gray-900'>
       <div className="flex flex-col justify-center items-center w-1/2 bg-gray-800 p-10 rounded-md">
         <h1 className="text-3xl text-white mb-4">Password Generator</h1>
-        <textarea value={password} ref={passwordRef} readOnly className='h-40 p-3 w-full bg-gray-700 text-white rounded-md' placeholder='Generated Password'></textarea>
+        <textarea value={password} ref={passwordRef} readOnly className='h-30 p-3 w-full bg-gray-700 text-white rounded-md' placeholder='Generated Password'></textarea>
         <div className='flex flex-col justify-center items-center mt-4'>
           <label className='text-white mb-2'>Length:</label>
           <input type="range" min={5} max={40} value={length} onChange={(e) => setLength(e.target.value)} className='w-full bg-gray-700 text-white rounded-md' />
           <span className='text-white'>{length}</span>
         </div>
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md' onClick={refresh}>new</button>
         <div className='flex flex-col justify-center items-center mt-4'>
           <label className='text-white mb-2'>Options:</label>
           <div className='flex items-center mb-2'>
@@ -51,7 +56,7 @@ function App() {
             <label className='text-white'>Include Special Characters</label>
           </div>
         </div>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md' onClick={copyToClip}>copy</button>
+        <button className='bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md' onClick={copyToClip}>copy</button>
       </div>
     </div>
   )
